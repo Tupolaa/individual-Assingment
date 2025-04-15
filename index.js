@@ -73,6 +73,17 @@ app.get("/books/:id", (req, res) => {
         res.status(404).json({ msg: "Book not found" });
     }
 });
+app.get("/api/books/:id", (req, res) => {
+    const id = Number(req.params.id);
+    const book = Books.find(book => book.id === id);
+    if (book){
+        res.json(book);
+    }
+   else {
+        res.status(404).json({ msg: "Book not found" });
+   }
+   
+});
 
 
 app.get("/api/books", (req, res) => {
